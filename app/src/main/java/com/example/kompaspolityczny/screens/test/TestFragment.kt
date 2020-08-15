@@ -6,13 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kompaspolityczny.R
 
 class TestFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TestFragment()
-    }
 
     private lateinit var viewModel: TestViewModel
 
@@ -20,6 +17,9 @@ class TestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Setting ActionBar title
+        (activity as AppCompatActivity).supportActionBar?.title = "Test"
+
         return inflater.inflate(R.layout.test_fragment, container, false)
     }
 

@@ -10,10 +10,6 @@ import com.example.kompaspolityczny.R
 
 class ResultFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ResultFragment()
-    }
-
     private lateinit var viewModel: ResultViewModel
 
     override fun onCreateView(
