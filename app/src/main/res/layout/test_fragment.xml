@@ -66,7 +66,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="4dp"
             android:text="@string/agree2_button_text"
-            android:onClick="@{() -> testViewModel.onButtonClickNext()}"
+            android:onClick="@{() -> testViewModel.onButtonClickNext_agree2()}"
             app:layout_constraintBottom_toTopOf="@+id/agree_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +75,7 @@
         <Button
             android:id="@+id/agree_button"
             android:layout_width="0dp"
+            android:onClick="@{() -> testViewModel.onButtonClickNext_agree1()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
@@ -89,6 +90,7 @@
         <Button
             android:id="@+id/neutral_button"
             android:layout_width="0dp"
+            android:onClick="@{() -> testViewModel.onButtonClickNext_neutral()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
@@ -103,6 +105,7 @@
         <Button
             android:id="@+id/disagree_button"
             android:layout_width="0dp"
+            android:onClick="@{() -> testViewModel.onButtonClickNext_disagree1()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
@@ -117,6 +120,7 @@
         <Button
             android:id="@+id/disagree2_button"
             android:layout_width="0dp"
+            android:onClick="@{() -> testViewModel.onButtonClickNext_disagree2()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
