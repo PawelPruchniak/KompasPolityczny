@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.databinding.TestFragmentBinding
 
@@ -32,9 +34,14 @@ class TestFragment : Fragment() {
         binding.testViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        // Setting ActionBar title
-        (activity as AppCompatActivity).supportActionBar?.title = "Test"
-
+        viewModel.eventTestFinish.observe(this, Observer { isFinished ->
+            if (isFinished) {
+                val currentQuestionsNumber = viewModel.questionNumber.value ?: 0
+                val action = TestFragmentDirections.actionTestFragmentToResultFragment(currentQuestionsNumber)
+                NavHostFragment.findNavController(this).navigate(action)
+                viewModel.onTestFinishComplete()
+            }
+        })
 
         return binding.root
     }

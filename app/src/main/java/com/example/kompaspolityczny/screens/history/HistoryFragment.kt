@@ -14,8 +14,6 @@ class HistoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Setting ActionBar title
-        (activity as AppCompatActivity).supportActionBar?.title = "History"
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_history, container, false)

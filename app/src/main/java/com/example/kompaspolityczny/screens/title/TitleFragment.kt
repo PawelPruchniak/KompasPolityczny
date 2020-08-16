@@ -15,12 +15,10 @@ class TitleFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        (activity as AppCompatActivity).supportActionBar?.title = ""
-
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_title, container, false)
 
-
+        (activity as AppCompatActivity).supportActionBar?.displayOptions = 0
 
         binding.startTestButton.setOnClickListener {
             findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToTestFragment())

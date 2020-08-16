@@ -16,12 +16,19 @@ class TestViewModel : ViewModel() {
     val questionNumber: LiveData<Int>
         get() = _questionNumber
 
-    private  lateinit var questionList: MutableList<String>
+    // Event which triggers the end of the test
+    private val _eventTestFinish = MutableLiveData<Boolean>()
+    val eventTestFinish: LiveData<Boolean>
+        get() = _eventTestFinish
+
+    private var qN: Int = -1
+
+    private lateinit var questionList: MutableList<String>
 
     init {
         resetQuestionList()
         nextQuestion()
-        _questionNumber.value = 0
+        _questionNumber.value = 1
     }
 
     private fun resetQuestionList() {
@@ -33,23 +40,34 @@ class TestViewModel : ViewModel() {
     }
 
     private fun nextQuestion() {
-        if (questionList.isEmpty()) {
-
+        if (qN >= 2) {
+            _eventTestFinish.value = true
         }
         else{
             _questionNumber.value = _questionNumber.value?.plus(1)
-            _question.value = questionList.removeAt(0)
+            qN++
+            _question.value = questionList.get(qN)
         }
     }
 
     private fun previousQuestion() {
-        if (_questionNumber.value!! >= 1){
+        if (qN >= 1){
             _questionNumber.value = _questionNumber.value?.minus(1)
+            qN--
+            _question.value = questionList.get(qN)
         }
     }
 
-    fun onButtonClick() {
+    fun onButtonClickNext() {
         nextQuestion()
+    }
+
+    fun onButtonClickPrevius() {
+        previousQuestion()
+    }
+
+    fun onTestFinishComplete() {
+        _eventTestFinish.value = false
     }
 
 }

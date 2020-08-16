@@ -12,5 +12,5 @@
     <string name="neutral_button_text">Nie wiem / trudno powiedzieć</string>
     <string name="agree_button_text">Zgadzam się</string>
     <string name="agree2_button_text">Zdecydowanie się zgadzam</string>
-    <string name="question_number_format">Pytanie nr: %d</string>
+    <string name="question_number_format">Pytanie nr: %d z 3</string>
 </resources>
