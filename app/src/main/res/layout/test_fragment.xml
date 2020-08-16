@@ -1,13 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screens.test.TestFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="testViewModel"
+            type="com.example.kompaspolityczny.screens.test.TestViewModel" />
+    </data>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_test_fragment" />
+        tools:context=".screens.test.TestFragment">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/hello_blank_test_fragment"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-77dp" />
+
+        <TextView
+            android:id="@+id/question_number_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="4dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/question_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:text="@{@string/question_number_format(testViewModel.questionNumber)}"
+            tools:text="Pytanie nr. :" />
+
+        <TextView
+            android:id="@+id/question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="64dp"
+            android:textAlignment="center"
+            android:text="@{testViewModel.question}"
+            app:layout_constraintBottom_toTopOf="@+id/agree2_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_number_textView"
+            tools:text="Tekst pytania, które może być bardzo długie. Nawet dłuższe od tego tutaj podanego i pokazanego w tym przykładzie. Bla Bla Bla, tak zdecydowanie" />
+
+        <Button
+            android:id="@+id/agree2_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/agree2_button_text"
+            android:onClick="@{() -> testViewModel.onButtonClick()}"
+            app:layout_constraintBottom_toTopOf="@+id/agree_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_textView" />
+
+        <Button
+            android:id="@+id/agree_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/agree_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/neutral_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agree2_button" />
+
+        <Button
+            android:id="@+id/neutral_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/neutral_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/disagree_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agree_button" />
+
+        <Button
+            android:id="@+id/disagree_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/disagree_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/disagree2_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/neutral_button" />
+
+        <Button
+            android:id="@+id/disagree2_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/disagree2_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/previus_question_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/disagree_button" />
+
+        <Button
+            android:id="@+id/previus_question_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/previus_question_button_text"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/disagree2_button" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
