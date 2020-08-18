@@ -31,7 +31,9 @@ class TestViewModel : ViewModel() {
 
     private var questionIndex: Int = -1
     private lateinit var questionList: MutableList<Question>
+    private lateinit var currentQuestion: Question
     var testAnalizer = TestAnalizer()
+
 
     lateinit var categoryResultList: FloatArray
 
@@ -43,34 +45,29 @@ class TestViewModel : ViewModel() {
 
     private fun resetQuestionList() {
         questionList = mutableListOf(
-            Question("Treść Pytanie", "Kategoria", true),
-            Question("Treść Pytanie2", "Kategoria2", false),
-            Question("Treść Pytanie3", "Kategoria2", false),
-            Question("Treść Pytanie4", "Kategoria2", false),
-            Question("Treść Pytanie5", "Kategoria2", false),
-            Question("Treść Pytanie6", "Kategoria2", false),
-            Question("Treść Pytanie7", "Kategoria2", false),
-            Question("Treść Pytanie8", "Kategoria2", false),
-            Question("Treść Pytanie9", "Kategoria2", false),
-            Question("Treść Pytanie10", "Kategoria2", false),
-            Question("Treść Pytanie11", "Kategoria2", false),
-            Question("Treść Pytanie12", "Kategoria2", false),
-            Question("Treść Pytanie13", "Kategoria2", false),
-            Question("Treść Pytanie14", "Kategoria2", false),
-            Question("Treść Pytanie15", "Kategoria2", false),
-            Question("Treść Pytanie16", "Kategoria2", false),
+            Question("Treść Pytanie", "Gospodarka", true),
+            Question("Treść Pytanie2", "Społeczeństwo", false),
+            Question("Treść Pytanie3", "Społeczeństwo", true),
+            Question("Treść Pytanie4", "Gospodarka", true),
+            Question("Treść Pytanie5", "Gospodarka", false),
+            Question("Treść Pytanie6", "PolitykaW", true),
+            Question("Treść Pytanie7", "PolitykaW", true),
+            Question("Treść Pytanie8", "PolitykaZ", true),
+            Question("Treść Pytanie9", "PolitykaW", false),
+            Question("Treść Pytanie10", "Gospodarka", false),
+            Question("Treść Pytanie11", "PolitykaZ", false),
+            Question("Treść Pytanie12", "PolitykaZ", true),
+            Question("Treść Pytanie13", "PolitykaZ", false),
+            Question("Treść Pytanie14", "Społeczeństwo", false),
+            Question("Treść Pytanie15", "Społeczeństwo", true),
+            Question("Treść Pytanie16", "PolitykaW", false),
         )
     }
 
 
     private fun nextQuestion(questionAnswerValue: Int) {
-        when (questionAnswerValue) {
-            // Aplaying value to resultList
-            AGREE2 -> testAnalizer.aplayAnswerToList(AGREE2)
-            AGREE -> testAnalizer.aplayAnswerToList(AGREE)
-            NEUTRAL -> testAnalizer.aplayAnswerToList(NEUTRAL)
-            DISAGREE -> testAnalizer.aplayAnswerToList(DISAGREE)
-            DISAGREE2 -> testAnalizer.aplayAnswerToList(DISAGREE2)
+        if(questionAnswerValue != 3){
+            testAnalizer.aplayAnswerToList(currentQuestion, questionAnswerValue)
         }
         if (questionIndex >= NUMBERR_OF_QUESTIONS - 1) {
             // event that ends Test
@@ -80,6 +77,7 @@ class TestViewModel : ViewModel() {
         else{
             _questionNumber.value = _questionNumber.value?.plus(1)
             questionIndex++
+            currentQuestion = questionList.get(questionIndex)
             _question.value = questionList.get(questionIndex).questionText
         }
     }
@@ -91,6 +89,7 @@ class TestViewModel : ViewModel() {
 
             _questionNumber.value = _questionNumber.value?.minus(1)
             questionIndex--
+            currentQuestion = questionList.get(questionIndex)
             _question.value = questionList.get(questionIndex).questionText
         }
     }
