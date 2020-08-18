@@ -5,12 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-const val NUMBERR_OF_QUESTIONS = 16
-const val AGREE2 = 2
-const val AGREE = 1
-const val NEUTRAL = 0
-const val DISAGREE = -1
-const val DISAGREE2 = -2
+const val NUMBERR_OF_QUESTIONS = 83
 
 class TestViewModel : ViewModel() {
 
@@ -90,6 +85,8 @@ class TestViewModel : ViewModel() {
             Question("Czuję się bardziej Europejczykiem, niżeli Polakiem.", "PolitykaZ", true),
             Question("Nie ma lepszych, czy gorszych kultur.", "PolitykaZ", true),
             Question("Wartości mojego narodu powinny być rozprzestrzenione na jak największą skalę.", "PolitykaZ", false),
+            Question("Strefa Schengen jest bardzo dobrą inicjatywą", "PolitykaZ", true),
+
 
             Question("Moje wartości religijne powinny być rozprzestrzenione na jak największą skalę.", "Społeczeństwo", false),
             Question("Lepszy świat powstanie w wyniku rozwoju nauki, automatyzacji i technologii.", "Społeczeństwo", true),

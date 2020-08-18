@@ -1,6 +1,14 @@
 package com.example.kompaspolityczny.screens.test
 
 import androidx.lifecycle.MutableLiveData
+import kotlin.math.round
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
+
+const val gospodarkaMAX = 56
+const val społeczeństwoMAX = 36
+const val politykaWMAX = 42
+const val politykaZMAX = 32
 
 class TestAnalizer {
 
@@ -62,16 +70,16 @@ class TestAnalizer {
             politykaZResult += politykaZResultList[x]
         }
 
-        var gospodarkaResultRight = (gospodarkaResult / 8) * 50 + 50
+        var gospodarkaResultRight = (gospodarkaResult / gospodarkaMAX) * 50 + 50
         var gospodarkaResultLeft = 100 - gospodarkaResultRight
 
-        var społeczeństwoResultRight = (społeczeństwoResult / 8) * 50 + 50
+        var społeczeństwoResultRight = (społeczeństwoResult / społeczeństwoMAX) * 50 + 50
         var społeczeństwoResultLeft = 100 - społeczeństwoResultRight
 
-        var politykaWResultRight = (politykaWResult / 8) * 50 + 50
+        var politykaWResultRight = (politykaWResult / politykaWMAX) * 50 + 50
         var politykaWResultLeft = 100 - politykaWResultRight
 
-        var politykaZResultRight = (politykaZResult / 8) * 50 + 50
+        var politykaZResultRight = (politykaZResult / politykaZMAX) * 50 + 50
         var politykaZResultLeft = 100 - politykaZResultRight
 
         println("Category 1 result Left: $gospodarkaResultLeft ||| result Right: $gospodarkaResultRight")
@@ -80,14 +88,14 @@ class TestAnalizer {
         println("Category 4 result Left: $politykaZResultLeft ||| result Right: $politykaZResultRight")
 
         val categoryResultList = FloatArray(8)
-        categoryResultList[0] = (gospodarkaResultLeft)
-        categoryResultList[1] = (gospodarkaResultRight)
-        categoryResultList[2] =(społeczeństwoResultLeft)
-        categoryResultList[3] =(społeczeństwoResultRight)
-        categoryResultList[4] =(politykaWResultLeft)
-        categoryResultList[5] =(politykaWResultRight)
-        categoryResultList[6] =(politykaZResultLeft)
-        categoryResultList[7] =(politykaZResultRight)
+        categoryResultList[0] = (round(gospodarkaResultLeft))
+        categoryResultList[1] = (round(gospodarkaResultRight))
+        categoryResultList[2] =(round(społeczeństwoResultLeft))
+        categoryResultList[3] =(round(społeczeństwoResultRight))
+        categoryResultList[4] =(round(politykaWResultLeft))
+        categoryResultList[5] =(round(politykaWResultRight))
+        categoryResultList[6] =(round(politykaZResultLeft))
+        categoryResultList[7] =(round(politykaZResultRight))
 
         return categoryResultList
     }
