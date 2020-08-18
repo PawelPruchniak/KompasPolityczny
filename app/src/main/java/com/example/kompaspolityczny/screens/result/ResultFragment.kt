@@ -31,7 +31,7 @@ class ResultFragment : Fragment() {
 
             val resultFragmentArgs by navArgs<ResultFragmentArgs>()
 
-            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.questionNumbers)
+            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.categoriesResult)
             viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
 
             binding.resultViewModel = viewModel

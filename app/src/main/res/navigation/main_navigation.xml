@@ -35,9 +35,8 @@
         android:label="result_fragment"
         tools:layout="@layout/result_fragment">
         <argument
-            android:name="questionNumbers"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="categoriesResult"
+            app:argType="float[]" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 
-class ResultViewModelFactory(private val questionNumbers: Int) : ViewModelProvider.Factory {
+class ResultViewModelFactory(private val categoriesResult: FloatArray) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ResultViewModel::class.java)) {
-            return ResultViewModel(questionNumbers) as T
+            return ResultViewModel(categoriesResult) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

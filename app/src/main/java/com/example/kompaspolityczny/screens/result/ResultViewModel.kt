@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ResultViewModel(questionNumbers: Int) : ViewModel() {
+class ResultViewModel(categoriesResult: FloatArray) : ViewModel() {
 
-    private val _score = MutableLiveData<Int>()
-    val score: LiveData<Int>
-        get() = _score
+    private val _results = MutableLiveData<FloatArray>()
+    val results: LiveData<FloatArray>
+        get() = _results
 
     init {
-        _score.value = questionNumbers
+        _results.value = categoriesResult
     }
 }

@@ -37,7 +37,8 @@ class TestFragment : Fragment() {
         viewModel.eventTestFinish.observe(this, Observer { isFinished ->
             if (isFinished) {
                 val currentQuestionsNumber = viewModel.questionNumber.value ?: 0
-                val action = TestFragmentDirections.actionTestFragmentToResultFragment(currentQuestionsNumber)
+                val results: FloatArray = viewModel.categoryResultList
+                val action = TestFragmentDirections.actionTestFragmentToResultFragment(results)
                 NavHostFragment.findNavController(this).navigate(action)
                 viewModel.onTestFinishComplete()
             }
