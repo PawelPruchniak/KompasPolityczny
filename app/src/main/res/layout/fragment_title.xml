@@ -7,6 +7,7 @@
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/layoutBackground"
         tools:context=".screens.title.TitleFragment">
 
         <Button
@@ -41,7 +42,7 @@
             android:fontFamily="@font/roboto"
             android:text="@string/author_text"
             android:textAlignment="center"
-            android:textColor="#1C5116"
+            android:textColor="@color/authorDescription"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
