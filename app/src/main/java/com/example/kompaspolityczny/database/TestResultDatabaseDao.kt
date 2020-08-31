@@ -15,8 +15,8 @@ interface  TestResultDatabaseDao {
     @Delete
     fun delete(result: TestResult)
 
-    @Query("SELECT * FROM test_results_database")
-    fun getAllResults(): LiveData<List<TestResult>>
+    @Query("SELECT * FROM test_results_database ORDER BY resultId DESC")
+    fun getAllResults(): List<TestResult>
 
     @Query("SELECT * FROM test_results_database ORDER BY resultId DESC LIMIT 1")
     fun getLastResult(): TestResult?

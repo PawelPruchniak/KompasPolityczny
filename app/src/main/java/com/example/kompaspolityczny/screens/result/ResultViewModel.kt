@@ -3,6 +3,7 @@ package com.example.kompaspolityczny.screens.result
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
@@ -42,14 +43,6 @@ class ResultViewModel(
                 testResult.politykaZRight = _results.value!![7].toInt()
 
                 database.insert(testResult)
-
-                val resultsDatabase: LiveData<List<TestResult>> = database.getAllResults()
-
-                for (result in resultsDatabase.value!!){
-                    println("result nr ${result.resultId}")
-                    println("result nr ${result.gospodarkaLeft}")
-                    println("result nr ${result.gospodarkaRight}")
-                }
             }
         }
         Log.i("ResultViewModel","WYNIKI ZOSTAŁY DODANE DO BAZY DANYCH")
