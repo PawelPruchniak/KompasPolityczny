@@ -32,7 +32,7 @@ class ResultFragment : Fragment() {
 
             val application = requireNotNull(this.activity).application
 
-            val dataSource = TestResultDatabase.getInstance(application).sleepDatabaseDao
+            val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
 
             val resultFragmentArgs by navArgs<ResultFragmentArgs>()
 
