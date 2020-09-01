@@ -17,6 +17,6 @@ fun TextView.setTestResultID(item: TestResult){
 @BindingAdapter("testResultGospodarkaLeft")
 fun TextView.setTestResultGospodarkaLeft(item: TestResult){
     item?.let {
-        text = "Komunizm: ${item.gospodarkaLeft}"
+        text = "Data wykonania testu: ${item.testDate}"
     }
 }

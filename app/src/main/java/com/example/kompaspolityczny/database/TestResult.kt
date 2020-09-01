@@ -11,7 +11,7 @@ data class TestResult(
     var resultId: Long = 0L,
 
     @ColumnInfo(name = "test_date")
-    var testDate: Long = 0L,
+    var testDate: String = "",
 
     @ColumnInfo(name = "gospodarka_left")
     var gospodarkaLeft: Int = 0,

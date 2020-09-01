@@ -3,16 +3,17 @@ package com.example.kompaspolityczny.screens.result
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
 import kotlinx.coroutines.*
-import kotlin.math.roundToLong
+import org.joda.time.DateTimeZone
+import org.joda.time.LocalDateTime
 
 class ResultViewModel(
     categoriesResult: FloatArray,
-    val database: TestResultDatabaseDao) : ViewModel() {
+    val database: TestResultDatabaseDao
+) : ViewModel() {
 
     private val _results = MutableLiveData<FloatArray>()
     val results: LiveData<FloatArray>
@@ -29,7 +30,12 @@ class ResultViewModel(
     fun addResultToDatabase(){
         uiScope.launch {
             withContext(Dispatchers.IO) {
+                database.clear()
                 val testResult = TestResult()
+
+                val currentDate: LocalDateTime = LocalDateTime.now(DateTimeZone.forID("Europe/Warsaw"))
+                testResult.testDate = currentDate.toString()
+
                 testResult.gospodarkaLeft = _results.value!![0].toInt()
                 testResult.gospodarkaRight = _results.value!![1].toInt()
 
@@ -45,7 +51,7 @@ class ResultViewModel(
                 database.insert(testResult)
             }
         }
-        Log.i("ResultViewModel","Wyniki testu zostały dodane do bazy danych")
+        Log.i("ResultViewModel", "Wyniki testu zostały dodane do bazy danych")
     }
 
     override fun onCleared() {
