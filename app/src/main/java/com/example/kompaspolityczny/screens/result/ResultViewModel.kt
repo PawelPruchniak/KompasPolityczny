@@ -36,6 +36,7 @@ class ResultViewModel(
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 val testResult = TestResult()
+                database.clear()
 
                 val currentDate: LocalDateTime = LocalDateTime.now(DateTimeZone.forID("Europe/Warsaw"))
                 testResult.testDate = currentDate.toString()
