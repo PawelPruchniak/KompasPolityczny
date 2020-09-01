@@ -45,7 +45,7 @@ class ResultViewModel(
                 database.insert(testResult)
             }
         }
-        Log.i("ResultViewModel","WYNIKI ZOSTAŁY DODANE DO BAZY DANYCH")
+        Log.i("ResultViewModel","Wyniki testu zostały dodane do bazy danych")
     }
 
     override fun onCleared() {

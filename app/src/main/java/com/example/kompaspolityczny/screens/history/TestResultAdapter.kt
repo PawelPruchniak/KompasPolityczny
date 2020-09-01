@@ -12,11 +12,11 @@ import com.example.kompaspolityczny.databinding.ListItemTestResultBinding
 
 class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(TestResultDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestResultAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: TestResultAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
