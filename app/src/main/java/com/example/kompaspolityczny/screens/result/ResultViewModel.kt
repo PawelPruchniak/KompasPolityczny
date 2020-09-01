@@ -7,8 +7,13 @@ import androidx.lifecycle.ViewModel
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
 import kotlinx.coroutines.*
+import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
+import org.joda.time.Instant
 import org.joda.time.LocalDateTime
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
+
 
 class ResultViewModel(
     categoriesResult: FloatArray,
@@ -30,7 +35,6 @@ class ResultViewModel(
     fun addResultToDatabase(){
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                database.clear()
                 val testResult = TestResult()
 
                 val currentDate: LocalDateTime = LocalDateTime.now(DateTimeZone.forID("Europe/Warsaw"))
