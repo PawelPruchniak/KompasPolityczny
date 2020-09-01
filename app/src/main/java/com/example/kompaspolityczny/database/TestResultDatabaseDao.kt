@@ -20,4 +20,7 @@ interface  TestResultDatabaseDao {
 
     @Query("SELECT * FROM test_results_database ORDER BY resultId DESC LIMIT 1")
     fun getLastResult(): TestResult?
+
+    @Query("DELETE FROM test_results_database")
+    fun clear()
 }
