@@ -6,7 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.kompaspolityczny.R
+import com.example.kompaspolityczny.database.TestResultDatabase
+import com.example.kompaspolityczny.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
 
@@ -15,9 +20,29 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        val binding: FragmentHistoryBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_history, container, false)
 
+        val application = requireNotNull(this.activity).application
 
+        val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
+
+        val viewModelFactory = HistoryFragmentViewModelFactory(dataSource, application)
+
+        val historyViewModel = ViewModelProvider(this, viewModelFactory).get(HistoryFragmentViewModel::class.java)
+
+        binding.historyViewModel = historyViewModel
+
+        val adapter = TestResultAdapter()
+        binding.resultList.adapter = adapter
+        historyViewModel.results.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
+
+        binding.lifecycleOwner = this
+
+        return binding.root
     }
 }

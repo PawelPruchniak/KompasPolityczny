@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.example.kompaspolityczny.R
+import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.ResultFragmentBinding
 
 class ResultFragment : Fragment() {
@@ -29,12 +30,18 @@ class ResultFragment : Fragment() {
                 false
             )
 
+            val application = requireNotNull(this.activity).application
+
+            val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
+
             val resultFragmentArgs by navArgs<ResultFragmentArgs>()
 
-            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.categoriesResult)
+            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.categoriesResult, dataSource)
+
             viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
 
             binding.resultViewModel = viewModel
+
             binding.setLifecycleOwner(this)
 
             return binding.root

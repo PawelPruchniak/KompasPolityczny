@@ -27,5 +27,7 @@
     <string name="społeczeństwo_text">Tradycja - Społeczeństwo - Progres</string>
     <string name="polityka_wewnętrzna_text">Kontrola - Polityka Wewnętrzna - Wolność</string>
     <string name="podziękowanie_text"><![CDATA[Dziękuję za zrobienie testu <3]]></string>
+    <string name="compass_image_description">Compass Image</string>
+    <string name="clear">CLEAR</string>
 
 </resources>
