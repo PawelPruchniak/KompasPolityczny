@@ -1,15 +1,17 @@
 package com.example.kompaspolityczny.screens.test
 
 import android.app.Application
+import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
+import org.joda.time.DateTimeZone
+import org.joda.time.LocalDateTime
 
 const val NUMBERR_OF_QUESTIONS = 83
 
@@ -37,6 +39,7 @@ class TestViewModel(val database: TestResultDatabaseDao,
     private var questionIndex: Int = -1
     private lateinit var questionList: MutableList<Question>
     private lateinit var currentQuestion: Question
+    private var lastResult = MutableLiveData<TestResult?>()
     var testAnalizer = TestAnalizer()
 
 
@@ -168,6 +171,47 @@ class TestViewModel(val database: TestResultDatabaseDao,
             questionIndex--
             currentQuestion = questionList.get(questionIndex)
             _question.value = questionList.get(questionIndex).questionText
+        }
+    }
+
+    fun addResultsToDatabase(results: FloatArray) {
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                val testResult = TestResult()
+
+                val currentDate: LocalDateTime =
+                    LocalDateTime.now(DateTimeZone.forID("Europe/Warsaw"))
+                testResult.testDate = currentDate.toString()
+
+                testResult.gospodarkaLeft = results[0].toInt()
+                testResult.gospodarkaRight = results[1].toInt()
+
+                testResult.spoleczenstwoLeft = results[2].toInt()
+                testResult.spoleczenstwoRight = results[3].toInt()
+
+                testResult.politykaWLeft = results[4].toInt()
+                testResult.politykaWRight = results[5].toInt()
+
+                testResult.politykaZLeft = results[6].toInt()
+                testResult.politykaZRight = results[7].toInt()
+
+                database.insert(testResult)
+                initializeLastResult()
+            }
+        }
+        Log.i("TestViewModel","Results was added to database!")
+    }
+
+    private fun initializeLastResult() {
+        uiScope.launch {
+            lastResult.value = getLastResultFromDatabase()
+        }
+    }
+
+    suspend fun getLastResultFromDatabase(): TestResult? {
+        return withContext(Dispatchers.IO) {
+            var result = database.getLastResult()
+            result
         }
     }
 
