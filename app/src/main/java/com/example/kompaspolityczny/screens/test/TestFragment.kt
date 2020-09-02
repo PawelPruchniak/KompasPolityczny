@@ -9,36 +9,39 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.kompaspolityczny.R
+import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.TestFragmentBinding
+import com.example.kompaspolityczny.screens.history.HistoryFragmentViewModel
+import com.example.kompaspolityczny.screens.history.HistoryFragmentViewModelFactory
 
 class TestFragment : Fragment() {
-
-    private lateinit var viewModel: TestViewModel
-
-    private lateinit var binding: TestFragmentBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
         // Setting binding
-        binding = DataBindingUtil.inflate(inflater, R.layout.test_fragment, container, false)
+        val binding: TestFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.test_fragment, container, false)
 
-        // Setting viewModel
-        viewModel = ViewModelProviders.of(this).get(TestViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
+        val viewModelFactory = TestViewModelFactory(dataSource, application)
+        val testViewModel = ViewModelProvider(this, viewModelFactory).get(
+            TestViewModel::class.java)
 
-        binding.testViewModel = viewModel
+        binding.testViewModel = testViewModel
         binding.setLifecycleOwner(this)
 
-        viewModel.eventTestFinish.observe(viewLifecycleOwner, Observer { isFinished ->
+        testViewModel.eventTestFinish.observe(viewLifecycleOwner, Observer { isFinished ->
             if (isFinished) {
-                val results: FloatArray = viewModel.categoryResultList
+                val results: FloatArray = testViewModel.categoryResultList
+
                 val action = TestFragmentDirections.actionTestFragmentToResultFragment(results)
                 NavHostFragment.findNavController(this).navigate(action)
-                viewModel.onTestFinishComplete()
+                testViewModel.onTestFinishComplete()
             }
         })
 

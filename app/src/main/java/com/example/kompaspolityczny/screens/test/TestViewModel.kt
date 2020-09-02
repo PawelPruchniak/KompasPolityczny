@@ -1,13 +1,23 @@
 package com.example.kompaspolityczny.screens.test
 
+import android.app.Application
 import android.widget.Button
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kompaspolityczny.database.TestResultDatabaseDao
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 const val NUMBERR_OF_QUESTIONS = 83
 
-class TestViewModel : ViewModel() {
+class TestViewModel(val database: TestResultDatabaseDao,
+                    application: Application): AndroidViewModel(application) {
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     // The current question
     private val _question = MutableLiveData<String>()

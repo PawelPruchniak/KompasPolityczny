@@ -20,8 +20,7 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentHistoryBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_history, container, false)
+        val binding: FragmentHistoryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
 
         val application = requireNotNull(this.activity).application
 

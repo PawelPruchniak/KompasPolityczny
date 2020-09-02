@@ -11,7 +11,7 @@ import com.example.kompaspolityczny.database.TestResult
 @BindingAdapter("testResultID")
 fun TextView.setTestResultID(item: TestResult){
     item?.let {
-        text = "ID: ${item.resultId}"
+        text = "Test nr: ${item.resultId}"
     }
 }
 
@@ -19,7 +19,7 @@ fun TextView.setTestResultID(item: TestResult){
 @BindingAdapter("testResultDate")
 fun TextView.setTestResultDate(item: TestResult){
     item?.let {
-        text = "Data wykonania testu: ${item.testDate}"
+        text = "Data: ${item.testDate}"
     }
 }
 
