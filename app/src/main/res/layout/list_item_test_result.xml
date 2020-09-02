@@ -22,12 +22,13 @@
             android:layout_height="64dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            app:testResultCompassImage="@{result}"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/compass_image_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            />
 
         <TextView
             android:id="@+id/testResult_id"
@@ -44,7 +45,7 @@
 
         <TextView
             android:id="@+id/gospodarkaLeft_string"
-            testResultGospodarkaLeft="@{result}"
+            app:testResultDate="@{result}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

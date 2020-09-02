@@ -16,8 +16,8 @@ fun TextView.setTestResultID(item: TestResult){
 }
 
 @SuppressLint("SetTextI18n")
-@BindingAdapter("testResultGospodarkaLeft")
-fun TextView.setTestResultGospodarkaLeft(item: TestResult){
+@BindingAdapter("testResultDate")
+fun TextView.setTestResultDate(item: TestResult){
     item?.let {
         text = "Data wykonania testu: ${item.testDate}"
     }
