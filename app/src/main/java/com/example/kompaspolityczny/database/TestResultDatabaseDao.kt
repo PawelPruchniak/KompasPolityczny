@@ -23,4 +23,7 @@ interface  TestResultDatabaseDao {
 
     @Query("DELETE FROM test_results_database")
     fun clear()
+
+    @Query("SELECT * from test_results_database WHERE resultId = :key")
+    fun getNightWithId(key: Long): LiveData<TestResult>
 }
