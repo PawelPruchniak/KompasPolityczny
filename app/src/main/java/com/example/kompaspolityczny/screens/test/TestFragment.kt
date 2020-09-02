@@ -20,7 +20,6 @@ class TestFragment : Fragment() {
     private lateinit var binding: TestFragmentBinding
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -34,9 +33,8 @@ class TestFragment : Fragment() {
         binding.testViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        viewModel.eventTestFinish.observe(this, Observer { isFinished ->
+        viewModel.eventTestFinish.observe(viewLifecycleOwner, Observer { isFinished ->
             if (isFinished) {
-                val currentQuestionsNumber = viewModel.questionNumber.value ?: 0
                 val results: FloatArray = viewModel.categoryResultList
                 val action = TestFragmentDirections.actionTestFragmentToResultFragment(results)
                 NavHostFragment.findNavController(this).navigate(action)
