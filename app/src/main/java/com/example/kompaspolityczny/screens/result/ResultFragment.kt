@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.navArgs
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.ResultFragmentBinding
@@ -35,9 +34,9 @@ class ResultFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
 
-        val resultFragmentArgs by navArgs<ResultFragmentArgs>()
+        val arguments = ResultFragmentArgs.fromBundle(requireArguments())
 
-        viewModelFactory = ResultViewModelFactory(resultFragmentArgs.testResultKey, dataSource)
+        viewModelFactory = ResultViewModelFactory(arguments.testResultKey, dataSource)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
         binding.resultViewModel = viewModel
 
