@@ -25,6 +25,7 @@ fun TextView.setTestResultDate(item: TestResult) {
 
 @BindingAdapter("testResultCompassImage")
 fun ImageView.setTestResultCompassImage(item: TestResult) {
-    setImageResource(R.drawable.ic_launcher_background)
-
+    item.let {
+        setImageResource(R.drawable.ic_launcher_background)
+    }
 }
