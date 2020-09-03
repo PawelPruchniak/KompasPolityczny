@@ -9,29 +9,22 @@ import com.example.kompaspolityczny.database.TestResult
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("testResultID")
-fun TextView.setTestResultID(item: TestResult){
-    item?.let {
+fun TextView.setTestResultID(item: TestResult) {
+    item.let {
         text = "Test nr: ${item.resultId}"
     }
 }
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("testResultDate")
-fun TextView.setTestResultDate(item: TestResult){
-    item?.let {
+fun TextView.setTestResultDate(item: TestResult) {
+    item.let {
         text = "Data: ${item.testDate}"
     }
 }
 
 @BindingAdapter("testResultCompassImage")
-fun ImageView.setTestResultCompassImage(item: TestResult){
+fun ImageView.setTestResultCompassImage() {
     setImageResource(R.drawable.ic_launcher_background)
 
-}
-
-@BindingAdapter("gospodarkaLeft")
-fun TextView.setGospodarkaLeft(item: TestResult){
-    item?.let {
-        text = "${item.gospodarkaLeft}"
-    }
 }

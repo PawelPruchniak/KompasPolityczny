@@ -7,7 +7,8 @@ import com.example.kompaspolityczny.database.TestResultDatabaseDao
 
 class ResultViewModelFactory(
     private val testResultKey: Long,
-    private val dataSource: TestResultDatabaseDao) : ViewModelProvider.Factory {
+    private val dataSource: TestResultDatabaseDao
+) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

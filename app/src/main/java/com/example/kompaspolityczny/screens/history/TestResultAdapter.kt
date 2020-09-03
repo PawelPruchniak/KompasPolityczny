@@ -2,15 +2,14 @@ package com.example.kompaspolityczny.screens.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.databinding.ListItemTestResultBinding
 
-class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(TestResultDiffCallback()) {
+class TestResultAdapter :
+    ListAdapter<TestResult, TestResultAdapter.ViewHolder>(TestResultDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -21,7 +20,8 @@ class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(T
         holder.bind(item)
     }
 
-    class ViewHolder private constructor(val binding: ListItemTestResultBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ListItemTestResultBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: TestResult) {
             binding.result = item
@@ -41,9 +41,7 @@ class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(T
 }
 
 
-
-
-class TestResultDiffCallback: DiffUtil.ItemCallback<TestResult>(){
+class TestResultDiffCallback : DiffUtil.ItemCallback<TestResult>() {
     override fun areItemsTheSame(oldItem: TestResult, newItem: TestResult): Boolean {
         return oldItem.resultId == newItem.resultId
     }

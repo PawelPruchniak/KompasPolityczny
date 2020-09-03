@@ -8,7 +8,8 @@ import kotlinx.coroutines.*
 
 class HistoryFragmentViewModel(
     val database: TestResultDatabaseDao,
-    application: Application): AndroidViewModel(application) {
+    application: Application
+) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

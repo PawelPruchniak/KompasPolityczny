@@ -1,13 +1,14 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.kompaspolityczny.screens.result
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResultDatabase
@@ -20,30 +21,28 @@ class ResultFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle? ): View? {
+        savedInstanceState: Bundle?
+    ): View? {
 
-            // Setting binding
-            val binding: ResultFragmentBinding = DataBindingUtil.inflate(
-                inflater,
-                R.layout.result_fragment,
-                container,
-                false
-            )
+        // Setting binding
+        val binding: ResultFragmentBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.result_fragment,
+            container,
+            false
+        )
 
-            val application = requireNotNull(this.activity).application
+        val application = requireNotNull(this.activity).application
+        val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
 
-            val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
+        val resultFragmentArgs by navArgs<ResultFragmentArgs>()
 
-            val resultFragmentArgs by navArgs<ResultFragmentArgs>()
+        viewModelFactory = ResultViewModelFactory(resultFragmentArgs.testResultKey, dataSource)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
+        binding.resultViewModel = viewModel
 
-            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.testResultKey, dataSource)
+        binding.lifecycleOwner = this
 
-            viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
-
-            binding.resultViewModel = viewModel
-
-            binding.setLifecycleOwner(this)
-
-            return binding.root
-        }
+        return binding.root
     }
+}
