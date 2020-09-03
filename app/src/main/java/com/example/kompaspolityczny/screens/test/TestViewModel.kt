@@ -36,10 +36,15 @@ class TestViewModel(val database: TestResultDatabaseDao,
     val eventTestFinish: LiveData<Boolean>
         get() = _eventTestFinish
 
+    // Event which triggers the move to ResultFragment
+    private val _eventMoveToTestResult = MutableLiveData<Boolean>()
+    val  eventMoveToTestResult: LiveData<Boolean>
+        get() = _eventMoveToTestResult
+
     private var questionIndex: Int = -1
     private lateinit var questionList: MutableList<Question>
     private lateinit var currentQuestion: Question
-    private var lastResult = MutableLiveData<TestResult?>()
+    var lastResult: Long = 0L
     var testAnalizer = TestAnalizer()
 
 
@@ -202,13 +207,18 @@ class TestViewModel(val database: TestResultDatabaseDao,
         Log.i("TestViewModel","Results was added to database!")
     }
 
-    private fun initializeLastResult() {
+     fun initializeLastResult() {
         uiScope.launch {
-            lastResult.value = getLastResultFromDatabase()
+            var result = getLastResultFromDatabase()
+            if (result != null) {
+                lastResult = result.resultId
+                println("LastResult ID: ${lastResult}")
+            }
+            _eventMoveToTestResult.value = true
         }
     }
 
-    suspend fun getLastResultFromDatabase(): TestResult? {
+    private suspend fun getLastResultFromDatabase(): TestResult? {
         return withContext(Dispatchers.IO) {
             var result = database.getLastResult()
             result
@@ -237,6 +247,10 @@ class TestViewModel(val database: TestResultDatabaseDao,
 
     fun onTestFinishComplete() {
         _eventTestFinish.value = false
+    }
+
+    fun onMoveToTestResultComplete() {
+        _eventMoveToTestResult.value = false
     }
 
 }

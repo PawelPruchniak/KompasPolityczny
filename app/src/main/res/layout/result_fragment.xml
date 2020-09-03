@@ -25,7 +25,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="32dp"
-            android:text="@{String.valueOf(resultViewModel.results[0])}"
+            android:text="@{String.valueOf(resultViewModel.result.gospodarkaLeft)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/category2Left_textView"
@@ -43,7 +43,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="32dp"
-            android:text="@{String.valueOf(resultViewModel.results[2])}"
+            android:text="@{String.valueOf(resultViewModel.result.spoleczenstwoLeft)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/category3Left_textView"
@@ -60,7 +60,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="32dp"
-            android:text="@{String.valueOf(resultViewModel.results[4])}"
+            android:text="@{String.valueOf(resultViewModel.result.politykaWLeft)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/category4Left_textView"
@@ -77,7 +77,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="32dp"
-            android:text="@{String.valueOf(resultViewModel.results[6])}"
+            android:text="@{String.valueOf(resultViewModel.result.politykaZLeft)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -87,11 +87,23 @@
             tools:text="50" />
 
         <TextView
+            android:id="@+id/category1Right_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="110dp"
+            android:text="@{String.valueOf(resultViewModel.result.gospodarkaRight)}"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/category1Left_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="50" />
+
+        <TextView
             android:id="@+id/category2Right_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="108dp"
-            android:text="@{String.valueOf(resultViewModel.results[3])}"
+            android:text="@{String.valueOf(resultViewModel.result.spoleczenstwoRight)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/category2Left_textView"
@@ -103,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="106dp"
-            android:text="@{String.valueOf(resultViewModel.results[5])}"
+            android:text="@{String.valueOf(resultViewModel.result.politykaWRight)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/category3Left_textView"
@@ -115,22 +127,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="106dp"
-            android:text="@{String.valueOf(resultViewModel.results[7])}"
+            android:text="@{String.valueOf(resultViewModel.result.politykaZRight)}"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/category4Left_textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="50" />
-
-        <TextView
-            android:id="@+id/category1Right_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="110dp"
-            android:text="@{String.valueOf(resultViewModel.results[1])}"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/category1Left_textView"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="50" />
 

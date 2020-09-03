@@ -26,4 +26,9 @@ interface  TestResultDatabaseDao {
 
     @Query("SELECT * from test_results_database WHERE resultId = :key")
     fun getNightWithId(key: Long): LiveData<TestResult>
+
+    @Query("SELECT * from test_results_database WHERE resultId = :key")
+    fun get(key: Long): TestResult
+
+
 }

@@ -35,8 +35,8 @@
         android:label="result_fragment"
         tools:layout="@layout/result_fragment">
         <argument
-            android:name="categoriesResult"
-            app:argType="float[]" />
+            android:name="testResultKey"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

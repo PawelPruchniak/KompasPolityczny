@@ -1,23 +1,17 @@
 package com.example.kompaspolityczny.screens.test
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.example.kompaspolityczny.R
-import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.TestFragmentBinding
-import com.example.kompaspolityczny.screens.history.HistoryFragmentViewModel
-import com.example.kompaspolityczny.screens.history.HistoryFragmentViewModelFactory
 
 class TestFragment : Fragment() {
 
@@ -40,9 +34,14 @@ class TestFragment : Fragment() {
             if (isFinished) {
                 val results: FloatArray = testViewModel.categoryResultList
                 testViewModel.addResultsToDatabase(results)
-                val action = TestFragmentDirections.actionTestFragmentToResultFragment(results)
-                NavHostFragment.findNavController(this).navigate(action)
                 testViewModel.onTestFinishComplete()
+            }
+        })
+
+        testViewModel.eventMoveToTestResult.observe(viewLifecycleOwner, Observer { isTrue ->
+            if (isTrue) {
+                this.findNavController().navigate(TestFragmentDirections.actionTestFragmentToResultFragment(testViewModel.lastResult))
+                testViewModel.onMoveToTestResultComplete()
             }
         })
 

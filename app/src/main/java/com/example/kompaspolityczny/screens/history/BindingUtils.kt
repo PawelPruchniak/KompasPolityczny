@@ -28,3 +28,10 @@ fun ImageView.setTestResultCompassImage(item: TestResult){
     setImageResource(R.drawable.ic_launcher_background)
 
 }
+
+@BindingAdapter("gospodarkaLeft")
+fun TextView.setGospodarkaLeft(item: TestResult){
+    item?.let {
+        text = "${item.gospodarkaLeft}"
+    }
+}

@@ -36,7 +36,7 @@ class ResultFragment : Fragment() {
 
             val resultFragmentArgs by navArgs<ResultFragmentArgs>()
 
-            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.categoriesResult, dataSource)
+            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.testResultKey, dataSource)
 
             viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
 
