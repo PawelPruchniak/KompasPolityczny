@@ -24,6 +24,7 @@ class HistoryFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
 
+
         val viewModelFactory = HistoryFragmentViewModelFactory(dataSource, application)
         val historyViewModel =
             ViewModelProvider(this, viewModelFactory).get(HistoryFragmentViewModel::class.java)
