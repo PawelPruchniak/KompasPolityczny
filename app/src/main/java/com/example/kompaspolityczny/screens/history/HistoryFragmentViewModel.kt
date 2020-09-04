@@ -31,8 +31,10 @@ class HistoryFragmentViewModel(
             // Clear the database table.
             clear()
         }
-        // Show a snackbar message, because it's friendly.
-        //_showSnackbarEvent.value = true
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 }

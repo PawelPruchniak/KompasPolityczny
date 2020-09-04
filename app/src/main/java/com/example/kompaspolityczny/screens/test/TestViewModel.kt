@@ -45,12 +45,13 @@ class TestViewModel(
     private lateinit var questionList: MutableList<Question>
     private lateinit var currentQuestion: Question
     var lastResult: Long = 0L
-    private var testAnalizer = TestAnalizer()
+    private var testAnalizer: TestAnalizer
 
 
     lateinit var categoryResultList: FloatArray
 
     init {
+        testAnalizer = TestAnalizer()
         resetQuestionList()
         nextQuestion(3)
         _questionNumber.value = 1
@@ -454,6 +455,12 @@ class TestViewModel(
 
     fun onMoveToTestResultComplete() {
         _eventMoveToTestResult.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+        Log.i("TestViewModel", "testViewModel destroyed")
     }
 
 }
