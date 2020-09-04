@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.FragmentHistoryBinding
@@ -32,12 +32,21 @@ class HistoryFragment : Fragment() {
         binding.historyViewModel = historyViewModel
 
         val adapter = TestResultAdapter(TestResultListener { resultId ->
-            Toast.makeText(context, "$resultId", Toast.LENGTH_SHORT).show()
+            historyViewModel.onTestResultClicked(resultId)
         })
         binding.resultList.adapter = adapter
         historyViewModel.results.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        historyViewModel.navigateToResultFragment.observe(viewLifecycleOwner, { resultId ->
+            resultId?.let {
+                this.findNavController().navigate(
+                    HistoryFragmentDirections.actionHistoryFragmentToResultFragment(resultId)
+                )
+                historyViewModel.onTestResultNavigated()
             }
         })
 

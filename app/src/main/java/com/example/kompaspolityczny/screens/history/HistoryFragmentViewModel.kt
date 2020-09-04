@@ -2,6 +2,8 @@ package com.example.kompaspolityczny.screens.history
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
 import kotlinx.coroutines.*
@@ -16,8 +18,20 @@ class HistoryFragmentViewModel(
 
     val results = database.getAllResults()
 
+    private val _navigateToResultFragment = MutableLiveData<Long>()
+    val navigateToResultFragment: LiveData<Long>
+        get() = _navigateToResultFragment
+
     val clearButtonVisible = Transformations.map(results) {
         it?.isNotEmpty()
+    }
+
+    fun onTestResultClicked(id: Long) {
+        _navigateToResultFragment.value = id
+    }
+
+    fun onTestResultNavigated() {
+        _navigateToResultFragment.value = null
     }
 
     private suspend fun clear() {
