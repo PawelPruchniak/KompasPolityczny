@@ -8,12 +8,17 @@
         <variable
             name="result"
             type="com.example.kompaspolityczny.database.TestResult" />
+
+        <variable
+            name="clickListener"
+            type="com.example.kompaspolityczny.screens.history.TestResultListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{() -> clickListener.onClick(result)}">
 
         <View
             android:layout_width="0dp"
