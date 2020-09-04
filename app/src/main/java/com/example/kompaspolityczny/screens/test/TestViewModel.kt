@@ -45,14 +45,14 @@ class TestViewModel(
     private lateinit var questionList: MutableList<Question>
     private lateinit var currentQuestion: Question
     var lastResult: Long = 0L
-    private var testAnalizer: TestAnalizer
+    private var testAnalizer: TestAnalizer = TestAnalizer()
 
 
     lateinit var categoryResultList: FloatArray
 
     init {
-        testAnalizer = TestAnalizer()
         resetQuestionList()
+        println("DLUGOSC LISTY: ${questionList.size}")
         nextQuestion(3)
         _questionNumber.value = 1
     }
