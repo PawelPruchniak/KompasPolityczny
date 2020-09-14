@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.ResultFragmentBinding
 
 class ResultFragment : Fragment() {
-
-    private lateinit var viewModel: ResultViewModel
-    private lateinit var viewModelFactory: ResultViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +34,24 @@ class ResultFragment : Fragment() {
 
         val arguments = ResultFragmentArgs.fromBundle(requireArguments())
 
-        viewModelFactory = ResultViewModelFactory(arguments.testResultKey, dataSource)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
-        binding.resultViewModel = viewModel
+        val viewModelFactory =
+            ResultViewModelFactory(arguments.testResultKey, dataSource, application)
+        val resultViewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
+        binding.resultViewModel = resultViewModel
 
         binding.lifecycleOwner = this
+
+        resultViewModel.eventMoveToTestHistory.observe(viewLifecycleOwner, { isTrue ->
+            if (isTrue) {
+                println("Jestem tutaj")
+                this.findNavController().navigate(
+                    ResultFragmentDirections.actionResultFragmentToHistoryFragment()
+                )
+                resultViewModel.onMoveToTestHistoryComplete()
+            }
+        })
+
 
         return binding.root
     }

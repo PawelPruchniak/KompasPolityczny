@@ -460,7 +460,7 @@ class TestViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
-        Log.i("TestViewModel", "testViewModel destroyed")
+        Log.i("TestViewModel", "testViewModel destroyed!")
     }
 
 }
