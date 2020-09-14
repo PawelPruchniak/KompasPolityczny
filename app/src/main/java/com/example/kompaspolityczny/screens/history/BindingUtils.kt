@@ -18,8 +18,11 @@ fun TextView.setTestResultID(item: TestResult) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("testResultDate")
 fun TextView.setTestResultDate(item: TestResult) {
+    var itemDate = item.testDate
+    itemDate = itemDate.dropLast(4)
+    itemDate = itemDate.replaceFirst("T", "  ")
     item.let {
-        text = "Data: ${item.testDate}"
+        text = "Data: $itemDate"
     }
 }
 
