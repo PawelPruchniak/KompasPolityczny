@@ -2,9 +2,10 @@ package com.example.kompaspolityczny.screens.history
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Transformations
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 class HistoryFragmentViewModel(
     val database: TestResultDatabaseDao,
@@ -15,23 +16,8 @@ class HistoryFragmentViewModel(
 
     val results = database.getAllResults()
 
-    val clearButtonVisible = Transformations.map(results) {
-        it?.isNotEmpty()
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
-
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clear()
-        }
-    }
-
-    fun onClear() {
-        uiScope.launch {
-            // Clear the database table.
-            clear()
-        }
-        // Show a snackbar message, because it's friendly.
-        //_showSnackbarEvent.value = true
-    }
-
 }
