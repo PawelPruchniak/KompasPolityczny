@@ -4,9 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 class HistoryFragmentViewModel(
     val database: TestResultDatabaseDao,
@@ -22,9 +23,6 @@ class HistoryFragmentViewModel(
     val navigateToResultFragment: LiveData<Long>
         get() = _navigateToResultFragment
 
-    val clearButtonVisible = Transformations.map(results) {
-        it?.isNotEmpty()
-    }
 
     fun onTestResultClicked(id: Long) {
         _navigateToResultFragment.value = id
@@ -32,19 +30,6 @@ class HistoryFragmentViewModel(
 
     fun onTestResultNavigated() {
         _navigateToResultFragment.value = null
-    }
-
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clear()
-        }
-    }
-
-    fun onClear() {
-        uiScope.launch {
-            // Clear the database table.
-            clear()
-        }
     }
 
     override fun onCleared() {
