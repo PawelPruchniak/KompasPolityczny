@@ -1,65 +1,62 @@
 package com.example.kompaspolityczny.screens.result
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
 import kotlinx.coroutines.*
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
-import org.joda.time.Instant
-import org.joda.time.LocalDateTime
-import org.joda.time.format.DateTimeFormat
-import org.joda.time.format.DateTimeFormatter
 
 
 class ResultViewModel(
-    categoriesResult: FloatArray,
-    val database: TestResultDatabaseDao
-) : ViewModel() {
+    private val testResultKey: Long,
+    dataSource: TestResultDatabaseDao,
+    application: Application
+) : AndroidViewModel(application) {
 
-    private val _results = MutableLiveData<FloatArray>()
-    val results: LiveData<FloatArray>
-        get() = _results
+    private val result = MediatorLiveData<TestResult>()
 
-    private val viewModelJob = Job()
-    private val uiScope =  CoroutineScope(Dispatchers.Main + viewModelJob)
+    val database = dataSource
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    private val _eventMoveToTestHistory = MutableLiveData<Boolean>()
+    val eventMoveToTestHistory: LiveData<Boolean>
+        get() = _eventMoveToTestHistory
+
+    fun getResult() = result
 
     init {
-        _results.value = categoriesResult
-        addResultToDatabase()
+        result.addSource(database.getNightWithId(testResultKey), result::setValue)
     }
-    
-    fun addResultToDatabase(){
+
+    fun onDelete() {
         uiScope.launch {
-            withContext(Dispatchers.IO) {
-                val testResult = TestResult()
-
-                val currentDate: LocalDateTime = LocalDateTime.now(DateTimeZone.forID("Europe/Warsaw"))
-                testResult.testDate = currentDate.toString()
-
-                testResult.gospodarkaLeft = _results.value!![0].toInt()
-                testResult.gospodarkaRight = _results.value!![1].toInt()
-
-                testResult.spoleczenstwoLeft = _results.value!![2].toInt()
-                testResult.spoleczenstwoRight = _results.value!![3].toInt()
-
-                testResult.politykaWLeft = _results.value!![4].toInt()
-                testResult.politykaWRight = _results.value!![5].toInt()
-
-                testResult.politykaZLeft = _results.value!![6].toInt()
-                testResult.politykaZRight = _results.value!![7].toInt()
-
-                database.insert(testResult)
-            }
+            delete()
         }
-        Log.i("ResultViewModel", "Wyniki testu zostały dodane do bazy danych")
+        // This should navigate to HistoryFragment -> but there are troubles
+        _eventMoveToTestHistory.value = true
+        Log.i("ResultViewModel", "TestResult was deleted!")
+    }
+
+    private suspend fun delete() {
+        withContext(Dispatchers.IO) {
+            database.deleteById(testResultKey)
+        }
+    }
+
+    fun onMoveToTestHistoryComplete() {
+        _eventMoveToTestHistory.value = false
+        println("value = false")
     }
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+        Log.i("ResultViewModel", "resultViewModel destroyed!")
     }
 }

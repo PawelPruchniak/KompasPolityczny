@@ -2,29 +2,29 @@ package com.example.kompaspolityczny.screens.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kompaspolityczny.database.TestResult
 import com.example.kompaspolityczny.databinding.ListItemTestResultBinding
 
-class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(TestResultDiffCallback()) {
+class TestResultAdapter(private val clickListener: TestResultListener) :
+    ListAdapter<TestResult, TestResultAdapter.ViewHolder>(TestResultDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position)!!, clickListener)
     }
 
-    class ViewHolder private constructor(val binding: ListItemTestResultBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder private constructor(val binding: ListItemTestResultBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: TestResult) {
+        fun bind(item: TestResult, clickListener: TestResultListener) {
             binding.result = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -41,9 +41,7 @@ class TestResultAdapter: ListAdapter<TestResult, TestResultAdapter.ViewHolder>(T
 }
 
 
-
-
-class TestResultDiffCallback: DiffUtil.ItemCallback<TestResult>(){
+class TestResultDiffCallback : DiffUtil.ItemCallback<TestResult>() {
     override fun areItemsTheSame(oldItem: TestResult, newItem: TestResult): Boolean {
         return oldItem.resultId == newItem.resultId
     }
@@ -51,4 +49,8 @@ class TestResultDiffCallback: DiffUtil.ItemCallback<TestResult>(){
     override fun areContentsTheSame(oldItem: TestResult, newItem: TestResult): Boolean {
         return oldItem == newItem
     }
+}
+
+class TestResultListener(val clickListener: (resultId: Long) -> Unit) {
+    fun onClick(result: TestResult) = clickListener(result.resultId)
 }

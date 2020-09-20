@@ -29,5 +29,6 @@
     <string name="podziękowanie_text"><![CDATA[Dziękuję za zrobienie testu <3]]></string>
     <string name="compass_image_description">Compass Image</string>
     <string name="clear">CLEAR</string>
+    <string name="delete_button_text">delete</string>
 
 </resources>

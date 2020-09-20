@@ -1,49 +1,58 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.kompaspolityczny.screens.result
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResultDatabase
 import com.example.kompaspolityczny.databinding.ResultFragmentBinding
 
 class ResultFragment : Fragment() {
 
-    private lateinit var viewModel: ResultViewModel
-    private lateinit var viewModelFactory: ResultViewModelFactory
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle? ): View? {
+        savedInstanceState: Bundle?
+    ): View? {
 
-            // Setting binding
-            val binding: ResultFragmentBinding = DataBindingUtil.inflate(
-                inflater,
-                R.layout.result_fragment,
-                container,
-                false
-            )
+        // Setting binding
+        val binding: ResultFragmentBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.result_fragment,
+            container,
+            false
+        )
 
-            val application = requireNotNull(this.activity).application
+        val application = requireNotNull(this.activity).application
+        val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
 
-            val dataSource = TestResultDatabase.getInstance(application).testResultDatabaseDao
+        val arguments = ResultFragmentArgs.fromBundle(requireArguments())
 
-            val resultFragmentArgs by navArgs<ResultFragmentArgs>()
+        val viewModelFactory =
+            ResultViewModelFactory(arguments.testResultKey, dataSource, application)
+        val resultViewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
+        binding.resultViewModel = resultViewModel
 
-            viewModelFactory = ResultViewModelFactory(resultFragmentArgs.categoriesResult, dataSource)
+        binding.lifecycleOwner = this
 
-            viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultViewModel::class.java)
+        resultViewModel.eventMoveToTestHistory.observe(viewLifecycleOwner, { isTrue ->
+            if (isTrue) {
+                println("Jestem tutaj")
+                this.findNavController().navigate(
+                    ResultFragmentDirections.actionResultFragmentToHistoryFragment()
+                )
+                resultViewModel.onMoveToTestHistoryComplete()
+            }
+        })
 
-            binding.resultViewModel = viewModel
 
-            binding.setLifecycleOwner(this)
-
-            return binding.root
-        }
+        return binding.root
     }
+}

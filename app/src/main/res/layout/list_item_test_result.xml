@@ -8,13 +8,27 @@
         <variable
             name="result"
             type="com.example.kompaspolityczny.database.TestResult" />
+
+        <variable
+            name="clickListener"
+            type="com.example.kompaspolityczny.screens.history.TestResultListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{() -> clickListener.onClick(result)}">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#454545"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/compass_image"
@@ -22,18 +36,19 @@
             android:layout_height="64dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            app:testResultCompassImage="@{result}"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/compass_image_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            />
 
         <TextView
             android:id="@+id/testResult_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toStartOf="@+id/compass_image"
@@ -44,10 +59,9 @@
 
         <TextView
             android:id="@+id/gospodarkaLeft_string"
-            testResultGospodarkaLeft="@{result}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
@@ -55,6 +69,7 @@
             app:layout_constraintEnd_toStartOf="@+id/compass_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/testResult_id"
+            app:testResultDate="@{result}"
             tools:text="LICZBA GOSPODARKA LEFT" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
