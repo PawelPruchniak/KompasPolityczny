@@ -29,6 +29,15 @@ fun TextView.setTestResultDate(item: TestResult) {
 @BindingAdapter("testResultCompassImage")
 fun ImageView.setTestResultCompassImage(item: TestResult) {
     item.let {
-        setImageResource(R.drawable.ic_launcher_background)
+        setImageResource(R.drawable.ic_political_compass_without_text)
+    }
+}
+
+@BindingAdapter("testResultDotImage")
+fun ImageView.setTestResultDotImage(item: TestResult) {
+    item.let {
+        setImageResource(R.drawable.ic_dot)
+        this.x = -100F
+        this.y = -100F
     }
 }

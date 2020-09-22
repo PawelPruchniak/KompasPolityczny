@@ -30,5 +30,6 @@
     <string name="compass_image_description">Compass Image</string>
     <string name="clear">CLEAR</string>
     <string name="delete_button_text">delete</string>
+    <string name="dot_image_description">Dot image to show users place on politicalcompass</string>
 
 </resources>
