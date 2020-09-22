@@ -9,7 +9,10 @@ import net.danlew.android.joda.JodaTimeAndroid
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // initializing JodaTimeAndroid before using it
         JodaTimeAndroid.init(this)
+
         setContentView(R.layout.activity_main)
 
         val navigationController = this.findNavController(R.id.nav_host_fragment)
