@@ -49,6 +49,7 @@
                 app:testResultCompassImage="@{result}" />
 
             <ImageView
+                android:id="@+id/dot_image"
                 android:layout_width="6dp"
                 android:layout_height="6dp"
                 android:layout_alignParentEnd="true"
