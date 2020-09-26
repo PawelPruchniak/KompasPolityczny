@@ -226,8 +226,8 @@
 
             <RelativeLayout
                 android:id="@+id/relativeLayout3"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="336dp"
+                android:layout_height="336dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -241,6 +241,7 @@
                     android:id="@+id/compass_image2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/political_compass_image_description"
                     app:srcCompat="@drawable/ic_political_compass" />
 
             </RelativeLayout>
