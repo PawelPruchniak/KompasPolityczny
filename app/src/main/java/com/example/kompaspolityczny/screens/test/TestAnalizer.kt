@@ -78,7 +78,20 @@ class TestAnalizer {
         val politykaZResultRight = (politykaZResult / politykaZMAX) * 50 + 50
         val politykaZResultLeft = 100 - politykaZResultRight
 
-        val categoryResultList = FloatArray(8)
+        val osX = (gospodarkaResultRight - 50) / 5
+        val osY1 = (politykaZResultLeft - 50) / 25
+        val osY2 = (spoleczenstwoResultLeft - 50) / 25
+        val osY3 = ((politykaWResultLeft - 50) / 25) * 3
+
+        val osY = (osY1 + osY2 + osY3)
+
+        println("osX: $osX")
+        println("osY1: $osY1")
+        println("osY2: $osY2")
+        println("osY3: $osY3")
+        println("osY: $osY")
+
+        val categoryResultList = FloatArray(10)
         categoryResultList[0] = (round(gospodarkaResultLeft))
         categoryResultList[1] = (round(gospodarkaResultRight))
         categoryResultList[2] = (round(spoleczenstwoResultLeft))
@@ -87,6 +100,9 @@ class TestAnalizer {
         categoryResultList[5] = (round(politykaWResultRight))
         categoryResultList[6] = (round(politykaZResultLeft))
         categoryResultList[7] = (round(politykaZResultRight))
+        categoryResultList[8] = osX
+        categoryResultList[9] = osY
+
 
         return categoryResultList
     }

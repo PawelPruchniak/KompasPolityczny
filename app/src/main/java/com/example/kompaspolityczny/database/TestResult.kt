@@ -37,10 +37,10 @@ data class TestResult(
     @ColumnInfo(name = "spoleczenstwo_right")
     var spoleczenstwoRight: Int = 0,
 
-    @ColumnInfo(name = "os_y")
-    var osY: Float = 0F,
+    @ColumnInfo(name = "os_X")
+    var osX: Float = 0F,
 
-    @ColumnInfo(name = "os_y")
-    var osX: Float = 0F
+    @ColumnInfo(name = "os_Y")
+    var osY: Float = 0F
 
 )
