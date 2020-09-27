@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="result"
-            type="com.example.kompaspolityczny.database.TestResult" />
-
         <variable
             name="resultViewModel"
             type="com.example.kompaspolityczny.screens.result.ResultViewModel" />
@@ -251,6 +246,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
+                    app:testResultDotImageResultFragment="@{resultViewModel.result}"
                     android:contentDescription="@string/dot_image_description"
                     app:srcCompat="@drawable/ic_dot" />
 
