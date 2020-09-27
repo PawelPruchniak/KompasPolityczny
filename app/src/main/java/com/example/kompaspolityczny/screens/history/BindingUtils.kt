@@ -38,12 +38,8 @@ fun ImageView.setTestResultCompassImage(item: TestResult) {
 fun ImageView.setTestResultDotImageHistoryFragment(item: TestResult) {
     item.let {
         setImageResource(R.drawable.ic_dot)
-        println(item.osX)
-        println(item.osY)
         this.x = (item.osX * 10) - 100
         this.y = (item.osY * 10) - 100
-        println(this.x)
-        println(this.y)
     }
 }
 
@@ -52,11 +48,9 @@ fun ImageView.setTestResultDotImageResultFragment(item: MediatorLiveData<TestRes
     item.let {
         if (item.value?.osX != null) {
             x = (item.value?.osX!! * 40) + 400
-            println("X: $x")
         }
         if (item.value?.osY != null) {
             y = (item.value?.osY!! * 40) + 400
-            println("Y: $y")
         }
     }
 }

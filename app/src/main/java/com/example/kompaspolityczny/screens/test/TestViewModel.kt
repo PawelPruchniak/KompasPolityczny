@@ -52,7 +52,6 @@ class TestViewModel(
 
     init {
         resetQuestionList()
-        println("DLUGOSC LISTY: ${questionList.size}")
         nextQuestion(3)
         _questionNumber.value = 1
     }

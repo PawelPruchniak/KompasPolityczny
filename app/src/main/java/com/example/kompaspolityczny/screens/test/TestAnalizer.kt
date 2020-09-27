@@ -85,12 +85,6 @@ class TestAnalizer {
 
         val osY = (osY1 + osY2 + osY3)
 
-        println("osX: $osX")
-        println("osY1: $osY1")
-        println("osY2: $osY2")
-        println("osY3: $osY3")
-        println("osY: $osY")
-
         val categoryResultList = FloatArray(10)
         categoryResultList[0] = (round(gospodarkaResultLeft))
         categoryResultList[1] = (round(gospodarkaResultRight))
@@ -102,7 +96,6 @@ class TestAnalizer {
         categoryResultList[7] = (round(politykaZResultRight))
         categoryResultList[8] = osX
         categoryResultList[9] = osY
-
 
         return categoryResultList
     }

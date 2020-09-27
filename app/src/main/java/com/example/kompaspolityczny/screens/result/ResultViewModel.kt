@@ -56,7 +56,6 @@ class ResultViewModel(
 
     fun onMoveToTestHistoryComplete() {
         _eventMoveToTestHistory.value = false
-        println("value = false")
     }
 
     override fun onCleared() {

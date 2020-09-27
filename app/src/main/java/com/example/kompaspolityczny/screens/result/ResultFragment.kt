@@ -45,7 +45,6 @@ class ResultFragment : Fragment() {
 
         resultViewModel.eventMoveToTestHistory.observe(viewLifecycleOwner, { isTrue ->
             if (isTrue) {
-                println("Jestem tutaj")
                 this.findNavController().navigate(
                     ResultFragmentDirections.actionResultFragmentToHistoryFragment()
                 )
