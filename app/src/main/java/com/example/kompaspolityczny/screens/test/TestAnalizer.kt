@@ -79,9 +79,9 @@ class TestAnalizer {
         val politykaZResultLeft = 100 - politykaZResultRight
 
         val osX = (gospodarkaResultRight - 50) / 5
-        val osY1 = (politykaZResultLeft - 50) / 25
-        val osY2 = (spoleczenstwoResultLeft - 50) / 25
-        val osY3 = ((politykaWResultLeft - 50) / 25) * 3
+        val osY1 = (politykaZResultRight - 50) / 25
+        val osY2 = (spoleczenstwoResultRight - 50) / 25
+        val osY3 = ((politykaWResultRight - 50) / 25) * 3
 
         val osY = (osY1 + osY2 + osY3)
 

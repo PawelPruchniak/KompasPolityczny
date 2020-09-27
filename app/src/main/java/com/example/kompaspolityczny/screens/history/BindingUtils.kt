@@ -37,7 +37,11 @@ fun ImageView.setTestResultCompassImage(item: TestResult) {
 fun ImageView.setTestResultDotImage(item: TestResult) {
     item.let {
         setImageResource(R.drawable.ic_dot)
-        this.x = -100F
-        this.y = -100F
+        println(item.osX)
+        println(item.osY)
+        this.x = (item.osX * 10) - 100
+        this.y = (item.osY * 10) - 100
+        println(this.x)
+        println(this.y)
     }
 }
