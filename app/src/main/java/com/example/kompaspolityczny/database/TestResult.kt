@@ -35,6 +35,12 @@ data class TestResult(
     var spoleczenstwoLeft: Int = 0,
 
     @ColumnInfo(name = "spoleczenstwo_right")
-    var spoleczenstwoRight: Int = 0
+    var spoleczenstwoRight: Int = 0,
+
+    @ColumnInfo(name = "os_y")
+    var osY: Float = 0F,
+
+    @ColumnInfo(name = "os_y")
+    var osX: Float = 0F
 
 )
