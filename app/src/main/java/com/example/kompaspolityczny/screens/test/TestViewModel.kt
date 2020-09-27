@@ -401,6 +401,9 @@ class TestViewModel(
                 testResult.politykaZLeft = results[6].toInt()
                 testResult.politykaZRight = results[7].toInt()
 
+                testResult.osX = results[8]
+                testResult.osY = results[9]
+
                 database.insert(testResult)
                 initializeLastResult()
             }
