@@ -28,10 +28,15 @@ class ResultViewModel(
     val eventMoveToTestHistory: LiveData<Boolean>
         get() = _eventMoveToTestHistory
 
+    private val _eventAdjustDotImage = MutableLiveData<Boolean>()
+    val eventAdjustDotImage: LiveData<Boolean>
+        get() = _eventAdjustDotImage
+
     fun getResult() = result
 
     init {
         result.addSource(database.getNightWithId(testResultKey), result::setValue)
+        _eventAdjustDotImage.value = true
     }
 
     fun onDelete() {

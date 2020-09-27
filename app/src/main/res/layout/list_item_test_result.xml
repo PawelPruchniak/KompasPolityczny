@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/compass_image_description"
-                app:testResultCompassImage="@{result}" />
+                app:testResultCompassImageHistoryFragment="@{result}" />
 
             <ImageView
                 android:id="@+id/dot_image"

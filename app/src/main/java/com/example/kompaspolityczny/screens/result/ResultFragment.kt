@@ -34,6 +34,7 @@ class ResultFragment : Fragment() {
 
         val arguments = ResultFragmentArgs.fromBundle(requireArguments())
 
+
         val viewModelFactory =
             ResultViewModelFactory(arguments.testResultKey, dataSource, application)
         val resultViewModel =
@@ -51,7 +52,6 @@ class ResultFragment : Fragment() {
                 resultViewModel.onMoveToTestHistoryComplete()
             }
         })
-
 
         return binding.root
     }

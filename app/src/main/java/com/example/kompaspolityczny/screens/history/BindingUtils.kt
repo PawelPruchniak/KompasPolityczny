@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MediatorLiveData
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.database.TestResult
 
@@ -33,8 +34,8 @@ fun ImageView.setTestResultCompassImage(item: TestResult) {
     }
 }
 
-@BindingAdapter("testResultDotImage")
-fun ImageView.setTestResultDotImage(item: TestResult) {
+@BindingAdapter("testResultDotImageHistoryFragment")
+fun ImageView.setTestResultDotImageHistoryFragment(item: TestResult) {
     item.let {
         setImageResource(R.drawable.ic_dot)
         println(item.osX)
@@ -43,5 +44,19 @@ fun ImageView.setTestResultDotImage(item: TestResult) {
         this.y = (item.osY * 10) - 100
         println(this.x)
         println(this.y)
+    }
+}
+
+@BindingAdapter("testResultDotImageResultFragment")
+fun ImageView.setTestResultDotImageResultFragment(item: MediatorLiveData<TestResult>) {
+    item.let {
+        if (item.value?.osX != null) {
+            x = (item.value?.osX!! * 40) + 400
+            println("X: $x")
+        }
+        if (item.value?.osY != null) {
+            y = (item.value?.osY!! * 40) + 400
+            println("Y: $y")
+        }
     }
 }
