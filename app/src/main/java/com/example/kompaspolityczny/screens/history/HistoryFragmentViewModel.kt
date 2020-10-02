@@ -5,8 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kompaspolityczny.database.TestResultDatabaseDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 class HistoryFragmentViewModel(
@@ -15,7 +13,6 @@ class HistoryFragmentViewModel(
 ) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     val results = database.getAllResults()
 

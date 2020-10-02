@@ -29,9 +29,7 @@ fun TextView.setTestResultDate(item: TestResult) {
 
 @BindingAdapter("testResultCompassImage")
 fun ImageView.setTestResultCompassImage(item: TestResult) {
-    item.let {
-        setImageResource(R.drawable.ic_political_compass_without_text)
-    }
+    setImageResource(R.drawable.ic_political_compass_without_text)
 }
 
 @BindingAdapter("testResultDotImageHistoryFragment")
@@ -46,11 +44,15 @@ fun ImageView.setTestResultDotImageHistoryFragment(item: TestResult) {
 @BindingAdapter("testResultDotImageResultFragment")
 fun ImageView.setTestResultDotImageResultFragment(item: MediatorLiveData<TestResult>) {
     item.let {
+        println("USTAWIAM SOURCE OBRAZKA")
+        setImageResource(R.drawable.ic_dot)
         if (item.value?.osX != null) {
-            x = (item.value?.osX!! * 40) + 400
+            this.x = (item.value!!.osX * 40) + 400
+            println("ustawiam x: $x")
         }
         if (item.value?.osY != null) {
-            y = (item.value?.osY!! * 40) + 400
+            this.y = (item.value!!.osY * 40) + 400
+            println("ustawiam x: $y")
         }
     }
 }

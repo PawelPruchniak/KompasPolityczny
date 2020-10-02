@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Kompas Polityczny</string>
-    <string name="hello_blank_title_fragment">This is TitleFragment</string>
-    <string name="hello_blank_history_fragment">Tutaj powstanie historia twoich testów, będziesz mógł/mogła obejrzeć wczesniej zrobione przez siebie testy.</string>
-    <string name="hello_blank_result_fragment">This is ResultFragment</string>
-    <string name="hello_blank_test_fragment">This is TestFragment</string>
     <string name="history_button_text">Check your tests history</string>
     <string name="start_test_button_text">Start your test</string>
     <string name="previus_question_button_text">Cofnij do poprzedniego pytania</string>
@@ -13,22 +9,12 @@
     <string name="agree_button_text">Zgadzam się</string>
     <string name="agree2_button_text">Zdecydowanie się zgadzam</string>
     <string name="question_number_format">Pytanie nr: %d z 83</string>
-    <string name="kapitalizm">Kapitalizm: %s</string>
-    <string name="komunizm">Komunizm: %s</string>
-    <string name="tradycja">Tradycja: %s</string>
-    <string name="postęp">Postęp: %s</string>
-    <string name="naród">Naród: %s</string>
-    <string name="świat">Globalizm %s</string>
-    <string name="kontrola">Kontrola: %s</string>
-    <string name="wolność">Wolność: %s</string>
     <string name="author_text">Made by Pawel Pruchniak</string>
     <string name="polityka_zewnętrzna_text">Naród - Polityka Zewnętrzna - Globalizm</string>
     <string name="gospodarka_text">Komunizm - Gospodarka - Kapitalizm</string>
     <string name="społeczeństwo_text">Tradycja - Społeczeństwo - Progres</string>
     <string name="polityka_wewnętrzna_text">Kontrola - Polityka Wewnętrzna - Wolność</string>
-    <string name="podziękowanie_text"><![CDATA[Dziękuję za zrobienie testu <3]]></string>
     <string name="compass_image_description">Compass Image</string>
-    <string name="clear">CLEAR</string>
     <string name="delete_button_text">delete</string>
     <string name="dot_image_description">Dot image to show users place on politicalcompass</string>
     <string name="political_compass_image_description">Image of political compass</string>

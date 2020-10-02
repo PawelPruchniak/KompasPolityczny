@@ -245,10 +245,8 @@
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
                     app:testResultDotImageResultFragment="@{resultViewModel.result}"
-                    android:contentDescription="@string/dot_image_description"
-                    app:srcCompat="@drawable/ic_dot" />
+                    android:contentDescription="@string/dot_image_description" />
 
             </RelativeLayout>
 
