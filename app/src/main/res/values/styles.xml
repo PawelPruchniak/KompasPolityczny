@@ -9,11 +9,4 @@
         <item name="elevation">50dp</item>
     </style>
 
-    <style name="TitleButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/ok_green_color</item>
-        <item name="colorControlHighlight">@color/selected_green_color</item>
-        <item name="android:textColor">@color/white_text_color</item>
-        <item name="colorAccent">@color/selected_green_color</item>
-    </style>
-
 </resources>
