@@ -56,7 +56,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/dot_image_description"
-                app:testResultDotImage="@{result}" />
+                app:testResultDotImageHistoryFragment="@{result}" />
         </RelativeLayout>
 
         <TextView

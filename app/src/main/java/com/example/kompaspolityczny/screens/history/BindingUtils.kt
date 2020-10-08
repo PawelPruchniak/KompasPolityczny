@@ -29,7 +29,9 @@ fun TextView.setTestResultDate(item: TestResult) {
 
 @BindingAdapter("testResultCompassImage")
 fun ImageView.setTestResultCompassImage(item: TestResult) {
-    setImageResource(R.drawable.ic_political_compass_without_text)
+    item.let{
+        setImageResource(R.drawable.ic_political_compass_without_text)
+    }
 }
 
 @BindingAdapter("testResultDotImageHistoryFragment")
