@@ -6,7 +6,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="background">@color/selected_red_color</item>
-        <item name="elevation">50dp</item>
     </style>
 
 </resources>
