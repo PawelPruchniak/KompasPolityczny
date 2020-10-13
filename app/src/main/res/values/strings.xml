@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kompas Polityczny</string>
     <string name="history_button_text">Check your tests history</string>
-    <string name="start_test_button_text">Start your test</string>
+    <string name="start_test_button_text">Rozpocznij test!</string>
     <string name="previus_question_button_text">Cofnij do poprzedniego pytania</string>
     <string name="disagree2_button_text">Zdecydowanie się nie zgadzam</string>
     <string name="disagree_button_text">Nie zgadzam się</string>
