@@ -23,7 +23,7 @@ fun TextView.setTestResultDate(item: TestResult) {
     itemDate = itemDate.dropLast(4)
     itemDate = itemDate.replaceFirst("T", "  ")
     item.let {
-        text = "Data: $itemDate"
+        text = "Data wykonania: $itemDate"
     }
 }
 
