@@ -11,11 +11,11 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/app_bar"
-            style="@style/Widget.Shrine.Toolbar"
+            style="@style/Widget.PC.Toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/shr_menu"
-            app:title="@string/shr_app_name" />
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/pc_menu"
+            app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
 </FrameLayout>
