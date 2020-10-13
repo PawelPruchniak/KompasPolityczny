@@ -40,8 +40,9 @@
             <TextView
                 android:id="@+id/question_textView"
                 android:layout_width="match_parent"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
                 android:layout_height="wrap_content"
+                android:textSize="15sp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
 
