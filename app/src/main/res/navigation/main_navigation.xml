@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.example.kompaspolityczny.screens.title.TitleFragment"
-        android:label=" "
+        android:label="Political Compass"
         tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_testFragment"

@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity() {
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
             when(destination.id) {
                 R.id.titleFragment -> {
-                    toolBar.setDisplayShowTitleEnabled(false)
-                    binding.appImage.visibility = View.VISIBLE
+                    toolBar.setDisplayShowTitleEnabled(true)
+                    binding.appImage.visibility = View.GONE
                 }
                 else -> {
                     toolBar.setDisplayShowTitleEnabled(true)
-                    binding.appImage.visibility = View.GONE
+                    binding.appImage.visibility = View.VISIBLE
                 }
             }
         }
