@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_titleFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_aboutFragment"
+            app:destination="@id/pc_about" />
     </fragment>
     <fragment
         android:id="@+id/testFragment"
@@ -52,4 +55,8 @@
             android:id="@+id/action_historyFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/pc_about"
+        android:name="com.example.kompaspolityczny.screens.about.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

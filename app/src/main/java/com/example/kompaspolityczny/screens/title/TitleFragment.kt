@@ -6,27 +6,42 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
 
+    private lateinit var viewModel: TitleFragmentViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentTitleBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_title, container, false
-        )
+        val binding = FragmentTitleBinding.inflate(inflater)
+        viewModel = ViewModelProvider(this).get(TitleFragmentViewModel::class.java)
+        binding.viewModel = viewModel
 
-        binding.startTestButton.setOnClickListener {
-            findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToTestFragment())
-        }
+        viewModel.navigateToHistoryFragment.observe(viewLifecycleOwner,
+            { shouldNavigate ->
+                if (shouldNavigate == true) {
+                    val navController = binding.root.findNavController()
+                    navController.navigate(R.id.action_titleFragment_to_historyFragment)
+                    viewModel.onNavigatedToHistoryFragmentDone()
+                }
+            })
 
-        binding.historyButton.setOnClickListener {
-            findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToHistoryFragment())
-        }
+        viewModel.navigateToTestFragment.observe(viewLifecycleOwner,
+            { shouldNavigate ->
+                if (shouldNavigate == true) {
+                    val navController = binding.root.findNavController()
+                    navController.navigate(R.id.action_titleFragment_to_testFragment)
+                    viewModel.onNavigatedToTestFragmentDone()
+                }
+            })
 
         return binding.root
     }
