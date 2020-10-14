@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         // initializing JodaTimeAndroid before using it
         JodaTimeAndroid.init(this)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = setContentView(this, R.layout.activity_main)
 
         setupNavigation()
 
@@ -42,13 +43,13 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
             when(destination.id) {
-                R.id.home -> {
+                R.id.titleFragment -> {
                     toolBar.setDisplayShowTitleEnabled(false)
-                    binding.heroImage.visibility = View.VISIBLE
+                    binding.appImage.visibility = View.VISIBLE
                 }
                 else -> {
                     toolBar.setDisplayShowTitleEnabled(true)
-                    binding.heroImage.visibility = View.GONE
+                    binding.appImage.visibility = View.GONE
                 }
             }
         }
