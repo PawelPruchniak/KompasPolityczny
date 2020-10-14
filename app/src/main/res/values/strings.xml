@@ -20,5 +20,6 @@
     <string name="political_compass_image_description">Image of political compass</string>
     <string name="menu_about_string">About</string>
     <string name="about_fragment_string">Witam na fragmencie About!</string>
+    <string name="menu_history_string">Historia</string>
 
 </resources>
