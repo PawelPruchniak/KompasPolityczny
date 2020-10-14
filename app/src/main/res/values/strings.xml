@@ -21,5 +21,6 @@
     <string name="menu_about_string">About</string>
     <string name="about_fragment_string">Witam na fragmencie About!</string>
     <string name="menu_history_string">Historia</string>
+    <string name="title_logo_description">Logo Image</string>
 
 </resources>

@@ -14,21 +14,36 @@
         android:layout_height="match_parent"
         tools:context=".screens.title.TitleFragment">
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/start_test_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            style="@style/Widget.PC.Button"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:text="@string/start_test_button_text"
-            android:onClick="@{() -> viewModel.onToTestButtonClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/title_logo"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:rotationX="40"
+            app:layout_constraintBottom_toTopOf="@+id/start_test_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            app:tint="?android:attr/textColorPrimary"
+            android:contentDescription="@string/title_logo_description" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_test_button"
+            style="@style/Widget.PC.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:onClick="@{() -> viewModel.onToTestButtonClicked()}"
+            android:text="@string/start_test_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
