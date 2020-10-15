@@ -21,14 +21,13 @@
             android:layout_marginStart="@dimen/margin_large"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="@dimen/margin_large"
-            android:rotationX="40"
+            android:contentDescription="@string/title_logo_description"
+            android:rotationX="18"
             app:layout_constraintBottom_toTopOf="@+id/start_test_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-            app:tint="?android:attr/textColorPrimary"
-            android:contentDescription="@string/title_logo_description" />
+            app:srcCompat="@drawable/ic_logo_big_inks_3" />
 
 
         <com.google.android.material.button.MaterialButton
