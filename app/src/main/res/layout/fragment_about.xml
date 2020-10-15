@@ -25,6 +25,7 @@
                     android:id="@+id/about_app"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
                     android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_medium"
@@ -32,18 +33,21 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/about_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:layout_marginTop="200dp"
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:text="@string/about_author_string"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/about_app" />
 

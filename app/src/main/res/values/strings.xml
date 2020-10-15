@@ -21,7 +21,31 @@
     <string name="menu_about_string">O aplikacji</string>
     <string name="menu_history_string">Historia testów</string>
     <string name="title_logo_description">Logo Image</string>
-    <string name="about_author_string">TextView</string>
-    <string name="about_app_string">Aplikacja</string>
+    <string name="about_author_string">Made by PawelPruchniak</string>
+    <string name="about_app_string">Są cztery niezależne osie - Gospodarka, Polityka Zagraniczna, Polityka Wewnętrzna i Społeczeństwo, na końcach każdej z nich umieszczone są dwie polarne wartości, oto one: \n\n
+
+Równość (Gospodarka)\n
+Ludzie o wynikach z większą wartością Równości wierzą że dobra powinny być równo rozdzielane między ludźmi. Zazwyczaj wspierają podatki progresywne, wysokie świadczenia społeczne, a przy wyższych wartościach, socjalizm. \n\n
+
+Wolny Rynek (Gospodarka)\n
+Osoby o wynikach z wysoką wartością Wolnego Rynku twierdzą że ekonomia powinna być skupiona na dynamicznym rozwoju. Zwykle dążą do niskich podatków, prywatyzacji, deregulacji i kapitalizmu. \n\n
+
+Naród (Polityka Zagraniczna)\n
+Indywidua z przewagą wartości Narodu są zwykle patriotami lub nacjonalistami. Często uważają że polityka zagraniczna powinna być agresywna, dążą do silnego, suwerennego narodu, wyższe wyniki czasem popierają ekspansję terytorialną. \n\n
+
+Świat (Polityka Zagraniczna)\n
+Ludzie o wysokiej wartości Świat są nierzadko kosmopolitami i globalistami. Z reguły wierzą w łagodną politykę zagraniczną, dążą do integracji i współpracy międzynarodowej, bardzo wysokie wyniki natomiast do rządu światowego. \n\n
+
+Swoboda (Polityka Wewnętrzna)\n
+Osoby z wyższą wartością Swobody zwykle dążą do wielu swobód obywatelskich, zazwyczaj wspierają demokrację i sprzeciwiają się ingerencji aparatu państwa w ich życia osobiste. (Ta oś nie odnosi się do swobód ekonomicznych) \n\n
+
+Kontrola (Polityka Wewnętrzna)\n
+Persony o wynikach z przewagą wartości Kontrola na ogół twierdzą że rząd powinien mieć wiele kompetencji. Zwykle popierają państwową interwencję w życia osobiste obywateli i nadzór rządowy, wysokie wartości mogą popierać cenzurę i autokrację. \n\n
+
+Tradycja (Społeczeństwo)\n
+Ludzie z wyższymi wartościami Tradycji przeważnie wierzą w wartości tradycyjne i ścisłe przestrzeganie kodu moralnego. Często (ale nie zawsze) są osobami religijnymi. \n\n
+
+Postęp (Społeczeństwo)\n
+Osoby z wysokim wskaźnikiem Postępu z reguły wierzą w racjonalizm i popierają zmiany społeczne. Zwykle (ale nie zawsze) są świeccy bądź są ateistami, popierają działania na rzecz ochrony środowiska a także badania naukowe i postęp technologiczny. \n\</string>
 
 </resources>
