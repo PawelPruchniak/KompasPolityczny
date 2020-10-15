@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Kompas Polityczny</string>
-    <string name="history_button_text">Sprawdź historie swoich testów</string>
     <string name="start_test_button_text">Rozpocznij test!</string>
     <string name="previus_question_button_text">Cofnij do poprzedniego pytania</string>
     <string name="disagree2_button_text">Zdecydowanie się nie zgadzam</string>
@@ -9,18 +8,20 @@
     <string name="agree_button_text">Zgadzam się</string>
     <string name="agree2_button_text">Zdecydowanie się zgadzam</string>
     <string name="question_number_format">Pytanie nr: %d z 83</string>
-    <string name="author_text">Made by Pawel Pruchniak</string>
+
     <string name="polityka_zewnętrzna_text">Naród - POLITYKA ZEWNĘTRZNA - Globalizm</string>
     <string name="gospodarka_text">Komunizm - GOSPODARKA - Kapitalizm</string>
     <string name="społeczeństwo_text">Tradycja - SPOŁECZEŃSTWO - Progres</string>
     <string name="polityka_wewnętrzna_text">Kontrola - POLITYKA WEWNĘTRZNA - Wolność</string>
+
     <string name="compass_image_description">Compass Image</string>
     <string name="delete_button_text">delete</string>
     <string name="dot_image_description">Dot image to show users place on politicalcompass</string>
     <string name="political_compass_image_description">Image of political compass</string>
     <string name="menu_about_string">O aplikacji</string>
-    <string name="about_fragment_string">Witam na fragmencie About!</string>
-    <string name="menu_history_string">Historia</string>
+    <string name="menu_history_string">Historia testów</string>
     <string name="title_logo_description">Logo Image</string>
+    <string name="about_author_string">TextView</string>
+    <string name="about_app_string">Aplikacja</string>
 
 </resources>

@@ -6,13 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import com.example.kompaspolityczny.R
 import com.example.kompaspolityczny.databinding.FragmentAboutBinding
-import com.example.kompaspolityczny.databinding.FragmentTitleBinding
-import com.example.kompaspolityczny.screens.title.TitleFragmentViewModel
 
 class AboutFragment : Fragment() {
 

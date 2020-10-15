@@ -17,7 +17,7 @@ class TestFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Setting binding
         val binding: TestFragmentBinding =
