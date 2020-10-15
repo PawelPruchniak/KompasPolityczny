@@ -16,15 +16,14 @@
                             android:id="@+id/toolbar"
                             style="@style/Widget.PC.Toolbar"
                             android:layout_width="match_parent"
-                            android:layout_height="?attr/actionBarSize"
-                            app:elevation="0dp">
+                            android:layout_height="?attr/actionBarSize">
 
                                 <ImageView
                                     android:id="@+id/app_image"
-                                    android:layout_width="60dp"
-                                    android:layout_height="match_parent"
+                                    android:layout_width="40dp"
+                                    android:layout_height="35dp"
                                     android:contentDescription="@string/app_name"
-                                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                                    app:srcCompat="@drawable/ic_logo" />
                         </androidx.appcompat.widget.Toolbar>
 
                         <fragment
@@ -32,7 +31,6 @@
                             android:name="androidx.navigation.fragment.NavHostFragment"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:elevation="8dp"
                             app:defaultNavHost="true"
                             app:navGraph="@navigation/main_navigation"
                             tools:ignore="FragmentTagUsage" />
