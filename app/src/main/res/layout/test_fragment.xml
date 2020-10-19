@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:textAppearance="?attr/textAppearanceSubtitle2"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
 
@@ -59,7 +59,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/agree2_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/test_button_height"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="64dp"
                 style="@style/Widget.PC.Button.StrongAgree"
@@ -75,7 +75,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/agree_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/test_button_height"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/margin_large"
@@ -108,7 +108,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/disagree_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/test_button_height"
                 android:layout_marginStart="@dimen/margin_large"
                 style="@style/Widget.PC.Button.Disagree"
                 android:layout_marginTop="@dimen/margin_medium"
@@ -124,7 +124,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/disagree2_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/test_button_height"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/margin_large"

@@ -6,4 +6,5 @@
     <dimen name="dotImage_size_large">24dp</dimen>
     <dimen name="radius_medium">4dp</dimen>
     <dimen name="margin_small">4dp</dimen>
+    <dimen name="test_button_height">55dp</dimen>
 </resources>
