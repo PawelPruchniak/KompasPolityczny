@@ -8,41 +8,49 @@
         <variable name="viewModel" type="com.example.kompaspolityczny.screens.title.TitleFragmentViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/title_layout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".screens.title.TitleFragment">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/title_logo"
-            android:layout_width="256dp"
-            android:layout_height="256dp"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:contentDescription="@string/title_logo_description"
-            android:rotationX="18"
-            app:layout_constraintBottom_toTopOf="@+id/start_test_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logo_big" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".screens.title.TitleFragment">
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/start_test_button"
-            style="@style/Widget.PC.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:onClick="@{() -> viewModel.onToTestButtonClicked()}"
-            android:text="@string/start_test_button_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/title_logo"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:contentDescription="@string/title_logo_description"
+                android:rotationX="18"
+                app:layout_constraintBottom_toTopOf="@+id/start_test_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logo_big" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_test_button"
+                style="@style/Widget.PC.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:onClick="@{() -> viewModel.onToTestButtonClicked()}"
+                android:text="@string/start_test_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_logo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
